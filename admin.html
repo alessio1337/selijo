@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ro"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Seljo – Admin</title><meta name="robots" content="noindex">
+<style>
+:root{--g:#1F3A33;--a:#C9A227;--p:#F6F1E4;--l:#e2dccb}
+*{box-sizing:border-box}body{margin:0;font:15px system-ui,sans-serif;background:var(--p);color:#1E2421}
+header{background:var(--g);color:#fff;padding:12px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+header b{font-size:20px;margin-right:auto}header button{background:none;border:0;color:#fff;font:inherit;cursor:pointer;padding:6px 10px;border-bottom:3px solid transparent}
+header button.on{border-color:var(--a)}main{max-width:1200px;margin:20px auto;padding:0 16px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--l)}th,td{padding:8px 10px;border-bottom:1px solid var(--l);text-align:left;vertical-align:top}th{background:#faf7ee;font-size:13px}
+.w{overflow-x:auto}input,select{font:inherit;padding:6px 8px;border:1px solid #c9c2ad;border-radius:6px;max-width:100%}
+.b{background:var(--a);border:0;border-radius:6px;padding:7px 12px;font:inherit;font-weight:600;cursor:pointer}.d{background:#fff;border:1px solid #c9c2ad;border-radius:6px;padding:6px 10px;cursor:pointer;color:#a33}
+#login{max-width:320px;margin:15vh auto;background:#fff;padding:24px;border-radius:12px;border:1px solid var(--l)}#login input{width:100%;margin:10px 0}
+.s{font-size:12px;color:#666}.hide{display:none}#err{color:#a33;font-size:13px}
+</style></head><body>
+<div id="login"><h2 style="margin:0">Admin Seljo</h2><input id="pw" type="password" placeholder="Parola" autofocus><button class="b" id="go" style="width:100%">Intră</button><p id="err"></p></div>
+<div id="app" class="hide">
+<header><b>Seljo · Admin</b><button id="t1" class="on">Comenzi</button><button id="t2">Produse și prețuri</button><button id="out">Ieșire</button></header>
+<main><div id="v1" class="w"></div><div id="v2" class="w hide"></div></main></div>
+<script>
+const $=id=>document.getElementById(id), ST=['nouă','în producție','gata','livrată','anulată'];
+const api=async(u,m='GET',b)=>{const r=await fetch(u,{method:m,headers:{'Content-Type':'application/json'},body:b?JSON.stringify(b):undefined});
+  const j=await r.json().catch(()=>({}));if(r.status===401&&u!=='/api/login'){show(false);throw 0}if(!r.ok)throw new Error(j.error||'Eroare');return j};
+const el=(t,p={},...k)=>{const e=document.createElement(t);for(const[a,v]of Object.entries(p)){if(a in e&&a!=='style')e[a]=v;else e.setAttribute(a,v)}e.append(...k);return e};
+const show=on=>{$('login').classList.toggle('hide',on);$('app').classList.toggle('hide',!on)};
+$('go').onclick=async()=>{try{await api('/api/login','POST',{password:$('pw').value});show(true);orders();prods()}catch(e){$('err').textContent=e.message||''}};
+$('pw').onkeydown=e=>e.key==='Enter'&&$('go').click();
+$('out').onclick=()=>{document.cookie='sid=; Max-Age=0; Path=/';location.reload()};
+$('t1').onclick=()=>tab(1);$('t2').onclick=()=>tab(2);
+function tab(n){$('v1').classList.toggle('hide',n!==1);$('v2').classList.toggle('hide',n!==2);$('t1').classList.toggle('on',n===1);$('t2').classList.toggle('on',n===2)}
+async function orders(){
+  const rows=await api('/api/admin/orders'), t=el('table',{},el('thead',{},el('tr',{},...['#','Data','Client','Produs','Dimensiuni','Total','Status','Fișier',''].map(h=>el('th',{},h)))));
+  const tb=el('tbody');
+  rows.forEach(o=>{
+    const sel=el('select',{onchange:()=>api('/api/admin/orders/'+o.id,'PATCH',{status:sel.value}).catch(e=>alert(e.message))},...ST.map(s=>el('option',{value:s,selected:s===o.status},s)));
+    const info=[o.finish,o.design,o.note].filter(Boolean).join(' · ');
+    tb.append(el('tr',{},el('td',{},String(o.id)),el('td',{},new Date(o.created).toLocaleString('ro-RO')),
+      el('td',{},o.name,el('br'),el('span',{className:'s'},o.phone||'')),
+      el('td',{},o.product_name,el('br'),el('span',{className:'s'},info)),
+      el('td',{},o.dim+' × '+o.qty),el('td',{},o.total+' lei'),el('td',{},sel),
+      el('td',{},o.has_file?el('a',{href:`/api/admin/orders/${o.id}/file`},o.file_name):'—'),
+      el('td',{},el('button',{className:'d',onclick:async()=>{if(confirm('Ștergi comanda #'+o.id+'?')){await api('/api/admin/orders/'+o.id,'DELETE');orders()}}},'Șterge'))));
+  });
+  t.append(tb);$('v1').replaceChildren(rows.length?t:el('p',{},'Nu există comenzi încă.'));
+}
+async function prods(){
+  const rows=await api('/api/admin/products'), tb=el('tbody');
+  const line=(p,isNew)=>{
+    const f={id:el('input',{value:p.id||'',disabled:!isNew,size:8,placeholder:'id'}),name:el('input',{value:p.name||'',placeholder:'Nume'}),
+      m2:el('input',{type:'number',step:'0.01',value:p.m2??'',style:'width:80px'}),fixed:el('input',{type:'number',step:'0.01',value:p.fixed??'',style:'width:80px'}),
+      min:el('input',{type:'number',step:'0.01',value:p.min??'',style:'width:70px'}),fin:el('input',{type:'checkbox',checked:!!p.fin}),
+      active:el('input',{type:'checkbox',checked:isNew||!!p.active}),sort:el('input',{type:'number',value:p.sort??99,style:'width:60px'})};
+    const save=el('button',{className:'b',onclick:async()=>{try{const b={id:f.id.value,name:f.name.value,m2:f.m2.value,fixed:f.fixed.value,min:f.min.value,fin:f.fin.checked,active:f.active.checked?1:0,sort:f.sort.value};
+      await api(isNew?'/api/admin/products':'/api/admin/products/'+p.id,isNew?'POST':'PUT',b);prods()}catch(e){alert(e.message)}}},isNew?'Adaugă':'Salvează');
+    const del=isNew?'':el('button',{className:'d',onclick:async()=>{if(confirm('Ștergi '+p.name+'?')){await api('/api/admin/products/'+p.id,'DELETE');prods()}}},'Șterge');
+    return el('tr',{},...Object.values(f).map(x=>el('td',{},x)),el('td',{},save,' ',del));
+  };
+  rows.forEach(p=>tb.append(line(p,false)));tb.append(line({},true));
+  const t=el('table',{},el('thead',{},el('tr',{},...['ID','Nume','Lei / m²','Preț fix','Minim','Finisaj','Activ','Ordine',''].map(h=>el('th',{},h)))),tb);
+  $('v2').replaceChildren(t,el('p',{className:'s'},'Prețurile includ TVA. Completează fie „Lei / m²”, fie „Preț fix” (pentru produse la bucată, cu dimensiune standard).'));
+}
+api('/api/admin/products').then(()=>{show(true);orders();prods()}).catch(()=>{});
+</script></body></html>

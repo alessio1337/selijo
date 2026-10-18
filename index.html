@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seljo – Bannere, colanturi și publicitate la comandă</title>
+<meta name="description" content="Producție proprie de bannere, colanturi, mesh, roll-up-uri, window graphics și branding auto. Prețuri cu TVA inclus, transport gratuit peste 500 lei.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{navy:{DEFAULT:'#1F3A33',700:'#2B4D44',900:'#142822'},ink:'#1E2421',paper:'#F6F1E4',accent:{DEFAULT:'#C9A227',600:'#8F7015'}},fontFamily:{display:['"Bricolage Grotesque"','system-ui','sans-serif'],sans:['"Instrument Sans"','system-ui','sans-serif']}}}}
+</script>
+<style>
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+.eyelet{width:14px;height:14px;border-radius:50%;background:#EFE6C8;box-shadow:inset 0 0 0 3px #8F7015,0 1px 0 rgba(255,255,255,.4)}
+.hem{background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.35) 0 6px,transparent 6px 12px)}
+.sway{transform-origin:top center;animation:sway 6s ease-in-out 1 both}
+@keyframes sway{0%{transform:rotate(-4deg) translateY(-20px);opacity:0}30%{opacity:1}60%{transform:rotate(1.5deg)}100%{transform:rotate(0)}}
+@media (prefers-reduced-motion:reduce){.sway{animation:none}html{scroll-behavior:auto}}
+:focus-visible{outline:3px solid #C9A227;outline-offset:2px}
+</style>
+</head>
+<body class="font-sans text-ink bg-white antialiased">
+
+<!-- HEADER -->
+<header class="sticky top-0 z-40 bg-navy text-white shadow-lg">
+  <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+    <a href="#acasa" class="font-display font-extrabold text-xl tracking-tight">Seljo<span class="text-accent">.</span></a>
+    <nav class="hidden lg:flex items-center gap-7 text-sm font-medium">
+      <a href="#produse" class="hover:text-accent">Produse</a>
+      <a href="#comanda" class="hover:text-accent">Comandă online</a>
+      <a href="#cum-comanzi" class="hover:text-accent">Cum comanzi</a>
+      <a href="#despre" class="hover:text-accent">Despre noi</a>
+      <a href="#contact" class="hover:text-accent">Contact</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="https://www.facebook.com/share/19tcc6o8ii/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook" class="hidden sm:flex w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 items-center justify-center">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M13.5 22v-8.2h2.8l.5-3.3h-3.3V8.4c0-.9.4-1.7 1.8-1.7h1.6V3.8S15.6 3.5 14.3 3.5c-2.7 0-4.3 1.6-4.3 4.5v2.5H7.2v3.3H10V22h3.5z"/></svg>
+      </a>
+      <a href="tel:+40785607201" class="hidden md:inline text-sm font-semibold">+40 785 607 201</a>
+      <a href="https://wa.me/40785607201" target="_blank" rel="noopener" class="bg-accent hover:bg-accent-600 text-black text-sm font-semibold px-4 py-2 rounded-lg">Comandă pe WhatsApp</a>
+      <button id="menuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center" aria-label="Meniu" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav id="mobileNav" class="hidden lg:hidden bg-navy-700 px-4 py-3 text-sm font-medium space-y-1">
+    <a href="#produse" class="block py-2">Produse</a>
+    <a href="#comanda" class="block py-2">Comandă online</a>
+    <a href="#cum-comanzi" class="block py-2">Cum comanzi</a>
+    <a href="#despre" class="block py-2">Despre noi</a>
+    <a href="#contact" class="block py-2">Contact</a>
+    <a href="https://www.facebook.com/share/19tcc6o8ii/?mibextid=wwXIfr" target="_blank" rel="noopener" class="block py-2">Facebook</a>
+  </nav>
+</header>
+
+<main>
+<!-- HERO -->
+<section id="acasa" class="bg-paper text-ink overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4 py-14 md:py-20 grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <p class="inline-block bg-white border border-accent/50 text-accent-600 rounded-full px-3 py-1 text-sm mb-5">Producție proprie · Prețuri cu TVA inclus</p>
+      <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.05] tracking-tight">Bannere și colanturi care se văd de la distanță.</h1>
+      <p class="mt-5 text-lg text-stone-600 max-w-lg">Printăm, tăiem și finisăm în atelierul nostru: bannere, autocolante, mesh, roll-up-uri, vitrine și branding auto. Trimiți ideea, primești oferta rapid.</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="https://wa.me/40785607201" target="_blank" rel="noopener" class="bg-accent hover:bg-accent-600 font-semibold px-6 py-3.5 rounded-lg">Cere ofertă pe WhatsApp</a>
+        <a href="#produse" class="border border-navy/30 text-navy hover:bg-white font-semibold px-6 py-3.5 rounded-lg">Vezi produsele și prețurile</a>
+      </div>
+      <p class="mt-6 text-sm text-stone-500">Transport gratuit peste 500 lei · Procesare în 3–5 zile lucrătoare</p>
+    </div>
+    <!-- banner graphic -->
+    <div class="relative mx-auto w-full max-w-md">
+      <div class="sway rounded-md bg-navy p-3 shadow-2xl">
+        <div class="flex justify-between px-1 pb-2"><span class="eyelet"></span><span class="eyelet"></span><span class="eyelet"></span><span class="eyelet"></span></div>
+        <div class="bg-white text-navy rounded-sm px-6 py-10 text-center">
+          <p class="font-display font-extrabold text-4xl leading-none">BANNER</p>
+          <p class="font-display font-extrabold text-4xl leading-none text-accent-600 mt-1">PERSONALIZAT</p>
+          <p class="mt-4 text-sm font-medium">440 g/m² · tiv rezistent · ochețuri incluse</p>
+          <p class="mt-5 inline-block bg-accent text-black font-display font-extrabold text-2xl px-5 py-2 rounded">de la 65 lei / m²</p>
+        </div>
+        <div class="hem h-1.5 mt-2 rounded"></div>
+        <div class="flex justify-between px-1 pt-2"><span class="eyelet"></span><span class="eyelet"></span><span class="eyelet"></span><span class="eyelet"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFICII -->
+<section class="bg-white border-y border-stone-200">
+  <div class="max-w-6xl mx-auto px-4 py-10 grid grid-cols-2 lg:grid-cols-4 gap-6">
+    <div><h3 class="font-display font-bold text-lg">Transport gratuit</h3><p class="text-sm text-stone-600 mt-1">La comenzile de peste 500 lei, în toată țara.</p></div>
+    <div><h3 class="font-display font-bold text-lg">Gata în 3–5 zile</h3><p class="text-sm text-stone-600 mt-1">Procesare rapidă după aprobarea grafică.</p></div>
+    <div><h3 class="font-display font-bold text-lg">TVA inclus</h3><p class="text-sm text-stone-600 mt-1">Prețul pe care îl vezi este prețul pe care îl plătești.</p></div>
+    <div><h3 class="font-display font-bold text-lg">Producție proprie</h3><p class="text-sm text-stone-600 mt-1">Controlăm calitatea de la print la finisare.</p></div>
+  </div>
+</section>
+
+<!-- CATEGORII / CATALOG -->
+<section id="produse" class="py-16 md:py-24">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="font-display font-extrabold text-3xl md:text-4xl tracking-tight">Catalog de produse</h2>
+    <p class="mt-3 text-stone-600 max-w-2xl">Prețuri orientative, cu TVA inclus. Pentru dimensiuni speciale sau tiraje mari, îți facem ofertă personalizată.</p>
+
+    <div id="grid" class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </div>
+</section>
+
+
+<!-- COMANDA ONLINE -->
+<section id="comanda" class="py-16 md:py-24 bg-white border-y border-stone-200">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="font-display font-extrabold text-3xl md:text-4xl tracking-tight">Comandă online</h2>
+    <p class="mt-3 text-stone-600 max-w-2xl">Alege produsul, introdu dimensiunile și încarcă designul. Vezi imediat prețul estimativ, apoi trimite comanda pe WhatsApp.</p>
+    <div class="mt-10 grid lg:grid-cols-5 gap-8">
+      <form id="orderForm" class="lg:col-span-3 space-y-5">
+        <div><label for="o_prod" class="block text-sm font-semibold mb-1">Produs</label>
+          <select id="o_prod" class="w-full rounded-lg border border-stone-300 px-3 py-2.5 bg-white"></select></div>
+        <fieldset id="o_dims">
+          <legend class="block text-sm font-semibold mb-1">Dimensiuni (cm)</legend>
+          <div class="grid grid-cols-3 gap-3">
+            <div><label for="o_w" class="text-xs text-stone-500">Lățime</label><input id="o_w" type="number" min="1" max="2000" value="300" class="w-full rounded-lg border border-stone-300 px-3 py-2.5"></div>
+            <div><label for="o_h" class="text-xs text-stone-500">Înălțime</label><input id="o_h" type="number" min="1" max="2000" value="100" class="w-full rounded-lg border border-stone-300 px-3 py-2.5"></div>
+            <div><label for="o_q" class="text-xs text-stone-500">Bucăți</label><input id="o_q" type="number" min="1" max="1000" value="1" class="w-full rounded-lg border border-stone-300 px-3 py-2.5"></div>
+          </div>
+          <p id="o_fixed" class="hidden text-sm text-stone-600 mt-2">Roll-up-ul are dimensiune standard 85 × 200 cm.</p>
+        </fieldset>
+        <div id="o_finwrap"><label for="o_fin" class="block text-sm font-semibold mb-1">Finisaj</label>
+          <select id="o_fin" class="w-full rounded-lg border border-stone-300 px-3 py-2.5 bg-white">
+            <option>Tiv și ochețuri</option><option>Buzunare pentru țeavă</option><option>Fără finisaj (tăiat la dimensiune)</option>
+          </select></div>
+        <div>
+          <p class="block text-sm font-semibold mb-2">Design</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex gap-2 items-start"><input type="radio" name="o_des" value="Am design gata, îl încarc mai jos" checked class="mt-1 accent-[#8F7015]"><span>Am designul gata (încarc fișierul)</span></label>
+            <label class="flex gap-2 items-start"><input type="radio" name="o_des" value="Am logo și text, vreau să faceți voi macheta" class="mt-1 accent-[#8F7015]"><span>Am logo și text, vreau să faceți voi macheta</span></label>
+          </div>
+          <label for="o_file" class="mt-3 flex flex-col items-center justify-center text-center border-2 border-dashed border-stone-300 hover:border-accent rounded-xl px-4 py-6 cursor-pointer bg-paper">
+            <span class="font-semibold">Alege fișierul cu designul</span>
+            <span class="text-xs text-stone-500 mt-1">JPG, PNG, PDF, AI, PSD, CDR, EPS</span>
+          </label>
+          <input id="o_file" type="file" accept="image/*,.pdf,.ai,.psd,.cdr,.eps" class="sr-only">
+          <div id="o_prev" class="hidden mt-3 flex items-center gap-3 text-sm bg-paper rounded-lg p-3 border border-stone-200">
+            <img id="o_img" alt="Previzualizare design" class="hidden w-16 h-16 object-contain bg-white rounded border border-stone-200">
+            <div class="flex-1 min-w-0"><p id="o_fname" class="font-semibold truncate"></p><p id="o_fsize" class="text-xs text-stone-500"></p></div>
+            <button type="button" id="o_rm" class="text-xs underline text-accent-600">Elimină</button>
+          </div>
+        </div>
+        <div><label for="o_note" class="block text-sm font-semibold mb-1">Text sau observații</label>
+          <textarea id="o_note" rows="3" class="w-full rounded-lg border border-stone-300 px-3 py-2.5" placeholder="Ex: text „Deschis acum”, culori, loc de montaj"></textarea></div>
+        <div><label for="o_name" class="block text-sm font-semibold mb-1">Numele tău</label>
+          <input id="o_name" required autocomplete="name" class="w-full rounded-lg border border-stone-300 px-3 py-2.5"></div>
+        <div><label for="o_phone" class="block text-sm font-semibold mb-1">Telefon</label>
+          <input id="o_phone" type="tel" autocomplete="tel" class="w-full rounded-lg border border-stone-300 px-3 py-2.5"></div>
+      </form>
+
+      <aside class="lg:col-span-2">
+        <div class="lg:sticky lg:top-24 bg-navy text-white rounded-2xl p-6">
+          <h3 class="font-display font-bold text-xl">Sumar comandă</h3>
+          <dl class="mt-4 space-y-2 text-sm">
+            <div class="flex justify-between gap-4"><dt class="text-white/70">Produs</dt><dd id="s_prod" class="text-right font-semibold"></dd></div>
+            <div class="flex justify-between gap-4"><dt class="text-white/70">Dimensiuni</dt><dd id="s_dim" class="text-right"></dd></div>
+            <div class="flex justify-between gap-4"><dt class="text-white/70">Suprafață totală</dt><dd id="s_area" class="text-right"></dd></div>
+            <div class="flex justify-between gap-4"><dt class="text-white/70">Preț unitar</dt><dd id="s_rate" class="text-right"></dd></div>
+          </dl>
+          <div class="mt-5 pt-5 border-t border-white/20">
+            <p class="text-sm text-white/70">Preț estimativ, TVA inclus</p>
+            <p id="s_total" class="font-display font-extrabold text-4xl text-accent mt-1"></p>
+            <p id="s_ship" class="text-sm mt-2 text-white/80"></p>
+          </div>
+          <button id="o_send" type="button" class="mt-6 w-full bg-accent hover:bg-accent-600 text-black font-semibold py-3.5 rounded-lg">Trimite comanda pe WhatsApp</button>
+          <p class="text-xs text-white/60 mt-3">Prețul final se confirmă în ofertă. Comanda și fișierul se salvează la noi când trimiți. Fișierele de până la 4 MB se încarcă pe site; pe cele mai mari le atașezi în conversația WhatsApp.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- CUM COMANZI -->
+<section id="cum-comanzi" class="bg-paper py-16 md:py-24">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="font-display font-extrabold text-3xl md:text-4xl tracking-tight">Cum comanzi, în 4 pași</h2>
+    <ol class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <li class="border-t-4 border-accent pt-4"><span class="font-display font-extrabold text-3xl text-accent-600">1</span><h3 class="font-display font-bold text-lg mt-1">Ne scrii</h3><p class="text-stone-600 text-sm mt-1">Pe WhatsApp sau prin formular: ce produs, ce dimensiuni, ce text.</p></li>
+      <li class="border-t-4 border-accent pt-4"><span class="font-display font-extrabold text-3xl text-accent-600">2</span><h3 class="font-display font-bold text-lg mt-1">Primești oferta</h3><p class="text-stone-600 text-sm mt-1">Preț final cu TVA și o machetă de aprobat.</p></li>
+      <li class="border-t-4 border-accent pt-4"><span class="font-display font-extrabold text-3xl text-accent-600">3</span><h3 class="font-display font-bold text-lg mt-1">Producem</h3><p class="text-stone-600 text-sm mt-1">Print, tăiere și finisare în 3–5 zile lucrătoare.</p></li>
+      <li class="border-t-4 border-accent pt-4"><span class="font-display font-extrabold text-3xl text-accent-600">4</span><h3 class="font-display font-bold text-lg mt-1">Livrăm</h3><p class="text-stone-600 text-sm mt-1">Curier la ușă sau ridicare personală. Transport gratuit peste 500 lei.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- TESTIMONIALE -->
+<section class="py-16 md:py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="font-display font-extrabold text-3xl md:text-4xl tracking-tight">Ce spun clienții</h2>
+    <p class="text-xs text-stone-500 mt-1">Texte demonstrative – înlocuiește-le cu recenzii reale.</p>
+    <div class="mt-8 grid md:grid-cols-3 gap-6">
+      <figure class="bg-paper rounded-xl p-6 border border-stone-200"><div class="text-accent-600" aria-label="5 stele">★★★★★</div><blockquote class="mt-3">Bannerul a ajuns în două zile și arată exact ca în machetă. Culori vii, finisaje curate.</blockquote><figcaption class="mt-4 text-sm font-semibold">Andrei P. <span class="font-normal text-stone-500">· Service auto</span></figcaption></figure>
+      <figure class="bg-paper rounded-xl p-6 border border-stone-200"><div class="text-accent-600" aria-label="5 stele">★★★★★</div><blockquote class="mt-3">Ne-au aplicat colantele pe vitrină fără bule și la un preț corect. Recomand.</blockquote><figcaption class="mt-4 text-sm font-semibold">Elena M. <span class="font-normal text-stone-500">· Magazin</span></figcaption></figure>
+      <figure class="bg-paper rounded-xl p-6 border border-stone-200"><div class="text-accent-600" aria-label="5 stele">★★★★★</div><blockquote class="mt-3">Comunicare rapidă pe WhatsApp și oferta a venit în aceeași zi. Vom comanda din nou.</blockquote><figcaption class="mt-4 text-sm font-semibold">Cristian D. <span class="font-normal text-stone-500">· Organizator evenimente</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- DESPRE -->
+<section id="despre" class="py-16 md:py-24 bg-paper">
+  <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
+    <div class="aspect-[4/3] rounded-xl bg-stone-200 flex items-center justify-center text-stone-500 text-sm">[ Fotografie atelier / echipă ]</div>
+    <div>
+      <h2 class="font-display font-extrabold text-3xl md:text-4xl tracking-tight">Despre Seljo</h2>
+      <p class="mt-4 text-stone-700">Suntem un atelier de producție publicitară specializat în bannere și colanturi. Lucrăm cu materiale rezistente, imprimare de calitate și finisaje atente, astfel încât mesajul tău să reziste la soare, ploaie și vânt.</p>
+      <p class="mt-3 text-stone-700">Producem tot ce ne cere un business local: de la un banner pentru fațadă la branding complet pentru flota auto. Răspundem repede și îți spunem sincer ce soluție se potrivește bugetului tău.</p>
+      <ul class="mt-5 space-y-2 text-stone-700">
+        <li>✔ Machetă de aprobat înainte de print</li>
+        <li>✔ Consultanță gratuită pentru materiale și dimensiuni</li>
+        <li>✔ Lucrări unicat sau tiraje mari</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="bg-navy text-white py-14">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <h2 class="font-display font-extrabold text-3xl md:text-4xl tracking-tight">Ai nevoie de un banner sau de colanturi?</h2>
+    <p class="mt-3 text-white/80">Trimite-ne dimensiunile și textul. Revenim cu oferta cât mai repede.</p>
+    <a href="https://wa.me/40785607201" target="_blank" rel="noopener" class="mt-7 inline-flex items-center gap-2 bg-accent hover:bg-accent-600 font-semibold px-8 py-4 rounded-lg text-lg">Scrie-ne pe WhatsApp</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-16 md:py-24">
+  <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10">
+    <div>
+      <h2 class="font-display font-extrabold text-3xl md:text-4xl tracking-tight">Contact</h2>
+      <p class="mt-3 text-stone-600">Cel mai rapid ne găsești pe WhatsApp. Poți folosi și formularul.</p>
+      <a href="https://wa.me/40785607201" target="_blank" rel="noopener" class="mt-6 flex items-center justify-center gap-3 bg-navy hover:bg-navy-700 text-white font-semibold text-lg py-4 rounded-xl">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14c-.2.6-1.300 1.200-1.800 1.200-.5.1-1 .2-3.300-.7-2.800-1.100-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.800s.7-2 1-2.300c.2-.3.500-.3.700-.3h.5c.2 0 .4 0 .6.500l.8 2c.1.200.1.400 0 .5l-.4.600c-.1.200-.3.300-.1.600.2.300.8 1.300 1.700 2.100 1.100 1 2.100 1.300 2.400 1.500.3.100.5.100.6-.1l.9-1.100c.2-.3.400-.2.700-.1l1.900.9c.3.1.5.200.5.400.1.100.1.700-.1 1.300z"/></svg>
+        Scrie-ne pe WhatsApp
+      </a>
+      <dl class="mt-8 space-y-3 text-stone-700">
+        <div><dt class="font-semibold">Telefon / WhatsApp</dt><dd><a href="tel:+40785607201" class="hover:text-accent">+40 785 607 201</a></dd></div>
+        <div><dt class="font-semibold">Facebook</dt><dd><a href="https://www.facebook.com/share/19tcc6o8ii/?mibextid=wwXIfr" target="_blank" rel="noopener" class="text-accent-600 underline">Pagina Seljo pe Facebook</a></dd></div>
+        <div><dt class="font-semibold">Program</dt><dd>Luni–Vineri, 08:00–18:00 <span class="text-xs text-stone-500">(modifică după nevoie)</span></dd></div>
+      </dl>
+    </div>
+    <form id="contactForm" class="bg-paper rounded-2xl p-6 md:p-8 border border-stone-200 space-y-4">
+      <div><label for="nume" class="block text-sm font-semibold mb-1">Nume</label><input id="nume" required class="w-full rounded-lg border border-stone-300 px-3 py-2.5 bg-white" autocomplete="name"></div>
+      <div><label for="prod" class="block text-sm font-semibold mb-1">Produs dorit</label>
+        <select id="prod" class="w-full rounded-lg border border-stone-300 px-3 py-2.5 bg-white">
+          <option>Banner personalizat</option><option>Colanturi / Autocolante</option><option>Mesh publicitar</option><option>Roll-up</option><option>Stickere personalizate</option><option>Window graphics</option><option>Branding auto</option>
+        </select></div>
+      <div><label for="msg" class="block text-sm font-semibold mb-1">Dimensiuni și detalii</label><textarea id="msg" rows="4" required class="w-full rounded-lg border border-stone-300 px-3 py-2.5 bg-white" placeholder="Ex: banner 3 x 1 m, text „Deschis acum”, ochețuri la colțuri"></textarea></div>
+      <button class="w-full bg-navy hover:bg-navy-700 text-white font-semibold py-3.5 rounded-lg">Trimite cererea pe WhatsApp</button>
+      <p class="text-xs text-stone-500">Formularul deschide WhatsApp cu mesajul completat. Nu stocăm date pe acest site.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-navy-900 text-white/80">
+  <div class="max-w-6xl mx-auto px-4 py-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-sm">
+    <div><p class="font-display font-extrabold text-xl text-white">Seljo<span class="text-accent">.</span></p><p class="mt-3">Bannere, colanturi și publicitate la comandă. Producție proprie.</p><p class="mt-3 text-white/50">[Date firmă: denumire legală, CUI, adresă]</p></div>
+    <div><p class="font-semibold text-white mb-3">Produse</p><ul class="space-y-2"><li><a href="#produse" class="hover:text-accent">Bannere</a></li><li><a href="#produse" class="hover:text-accent">Colanturi</a></li><li><a href="#produse" class="hover:text-accent">Mesh și roll-up</a></li><li><a href="#produse" class="hover:text-accent">Window graphics</a></li></ul></div>
+    <div><p class="font-semibold text-white mb-3">Informații</p><ul class="space-y-2"><li><a href="#contact" class="hover:text-accent">Termeni și condiții</a></li><li><a href="#contact" class="hover:text-accent">Politica de confidențialitate</a></li><li><a href="#contact" class="hover:text-accent">Livrare și retur</a></li></ul></div>
+    <div><p class="font-semibold text-white mb-3">Urmărește-ne</p>
+      <div class="flex gap-3">
+        <a href="https://wa.me/40785607201" target="_blank" rel="noopener" class="bg-white/10 hover:bg-white/20 rounded-lg px-3 py-2">WhatsApp</a>
+        <a href="https://www.facebook.com/share/19tcc6o8ii/?mibextid=wwXIfr" target="_blank" rel="noopener" class="bg-white/10 hover:bg-white/20 rounded-lg px-3 py-2">Facebook</a>
+      </div>
+      <p class="mt-4">+40 785 607 201</p>
+    </div>
+  </div>
+  <div class="border-t border-white/10 text-center text-xs py-4 text-white/50">© <span id="yr"></span> Seljo. Toate drepturile rezervate. Prețurile includ TVA.</div>
+</footer>
+
+<!-- WHATSAPP FLOTANT -->
+<a href="https://wa.me/40785607201" target="_blank" rel="noopener" aria-label="Scrie-ne pe WhatsApp" class="fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#1EBE5A] text-white shadow-xl flex items-center justify-center">
+  <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14c-.2.6-1.300 1.200-1.800 1.200-.5.1-1 .2-3.300-.7-2.800-1.100-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.800s.7-2 1-2.300c.2-.3.500-.3.700-.3h.5c.2 0 .4 0 .6.500l.8 2c.1.200.1.400 0 .5l-.4.600c-.1.200-.3.300-.1.600.2.300.8 1.300 1.700 2.100 1.100 1 2.100 1.300 2.400 1.500.3.100.5.100.6-.1l.9-1.100c.2-.3.400-.2.700-.1l1.900.9c.3.1.5.200.5.400.1.100.1.700-.1 1.300z"/></svg>
+</a>
+
+<script>
+const products=[
+ {n:'Bannere personalizate',p:'de la 65 lei / m²',d:'Banner frontlit 440 g/m², print color, tiv și ochețuri incluse.',c:'from-[#F3ECD8] to-[#E8DDB8]',t:'Banner'},
+ {n:'Colanturi / Autocolante',p:'de la 75 lei / m²',d:'Folie autocolantă print + tăiere pe contur, pentru interior și exterior.',c:'from-[#F3ECD8] to-[#E8DDB8]',t:'Colant'},
+ {n:'Mesh publicitar',p:'de la 80 lei / m²',d:'Plasă perforată pentru garduri, schele și fațade, rezistentă la vânt.',c:'from-[#F3ECD8] to-[#E8DDB8]',t:'Mesh'},
+ {n:'Roll-up',p:'de la 180 lei',d:'Sistem de expunere 85 × 200 cm cu print inclus și geantă de transport.',c:'from-[#F3ECD8] to-[#E8DDB8]',t:'Roll-up'},
+ {n:'Stickere personalizate',p:'de la 25 lei',d:'Stickere decupate, în orice formă, pentru ambalaje și promovare.',c:'from-[#F3ECD8] to-[#E8DDB8]',t:'Sticker'},
+ {n:'Window graphics',p:'de la 85 lei / m²',d:'Folii pentru vitrine: imprimate, perforate sau mate. Montaj la cerere.',c:'from-[#F3ECD8] to-[#E8DDB8]',t:'Vitrină'},
+ {n:'Branding auto',p:'de la 120 lei / m²',d:'Colanturi pentru mașini și flote: portiere, lunetă, wrap parțial.',c:'from-[#F3ECD8] to-[#E8DDB8]',t:'Auto'},
+];
+['banner','colant','mesh','rollup','sticker','window','auto'].forEach((id,i)=>products[i].id=id);
+document.getElementById('grid').innerHTML=products.map(x=>`
+<article class="border border-stone-200 border-t-4 border-t-accent rounded-xl overflow-hidden flex flex-col bg-white">
+  <div class="h-40 bg-gradient-to-br ${x.c} flex items-center justify-center"><span class="font-display font-extrabold text-3xl text-accent-600/70">${x.t}</span></div>
+  <div class="p-5 flex flex-col flex-1">
+    <h3 class="font-display font-bold text-xl">${x.n}</h3>
+    <p class="text-sm text-stone-600 mt-2 flex-1">${x.d}</p>
+    <p class="mt-4 font-display font-extrabold text-2xl text-navy">${x.p} <span class="text-xs font-sans font-medium text-stone-500">TVA inclus</span></p>
+    <a href="#comanda" data-pick="${x.id}" class="mt-4 text-center bg-accent hover:bg-accent-600 text-black font-semibold py-2.5 rounded-lg">Alege dimensiunile</a>
+  </div>
+</article>`).join('');
+
+document.getElementById('menuBtn').onclick=e=>{const m=document.getElementById('mobileNav');m.classList.toggle('hidden');e.currentTarget.setAttribute('aria-expanded',!m.classList.contains('hidden'))};
+document.querySelectorAll('#mobileNav a').forEach(a=>a.addEventListener('click',()=>document.getElementById('mobileNav').classList.add('hidden')));
+document.getElementById('yr').textContent=new Date().getFullYear();
+document.getElementById('contactForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const t=`Bună! Sunt ${nume.value}. Doresc ofertă pentru: ${prod.value}. Detalii: ${msg.value}`;
+  window.open('https://wa.me/40785607201?text='+encodeURIComponent(t),'_blank','noopener');
+});
+
+/* ===== Comanda online ===== */
+let cfg=[
+ {id:'banner',n:'Banner personalizat',m2:65,fin:true},
+ {id:'colant',n:'Colant / Autocolant',m2:75},
+ {id:'mesh',n:'Mesh publicitar',m2:80,fin:true},
+ {id:'rollup',n:'Roll-up (85 × 200 cm)',fixed:180},
+ {id:'sticker',n:'Stickere personalizate',m2:120,min:25},
+ {id:'window',n:'Window graphics',m2:85},
+ {id:'auto',n:'Branding auto',m2:120},
+];
+const $=id=>document.getElementById(id);
+const lei=n=>n.toLocaleString('ro-RO',{minimumFractionDigits:0,maximumFractionDigits:2})+' lei';
+$('o_prod').innerHTML=cfg.map(c=>`<option value="${c.id}">${c.n}</option>`).join('');
+function calc(){
+  const c=cfg.find(x=>x.id===$('o_prod').value);
+  const q=Math.max(1,parseInt($('o_q').value)||1);
+  let w=Math.max(1,parseFloat($('o_w').value)||0), h=Math.max(1,parseFloat($('o_h').value)||0);
+  $('o_fixed').classList.toggle('hidden',!c.fixed);
+  $('o_w').disabled=$('o_h').disabled=!!c.fixed;
+  $('o_finwrap').classList.toggle('hidden',!c.fin);
+  let area,unit,total,dim;
+  if(c.fixed){w=85;h=200;dim='85 × 200 cm';area=w*h/10000*q;unit=lei(c.fixed)+' / buc';total=c.fixed*q;}
+  else{dim=`${w} × ${h} cm`;area=w*h/10000*q;unit=lei(c.m2)+' / m²';total=Math.max(area*c.m2,c.min||0);}
+  total=Math.round(total*100)/100;
+  $('s_prod').textContent=c.n;
+  $('s_dim').textContent=dim+(q>1?` × ${q} buc`:'');
+  $('s_area').textContent=area.toFixed(2).replace('.',',')+' m²';
+  $('s_rate').textContent=unit;
+  $('s_total').textContent=lei(total);
+  $('s_ship').textContent=total>=500?'Transport gratuit inclus.':`Mai ai ${lei(500-total)} până la transport gratuit.`;
+  return {c,q,w,h,dim,area,total};
+}
+['o_prod','o_w','o_h','o_q'].forEach(i=>$(i).addEventListener('input',calc));
+document.addEventListener('click',e=>{const a=e.target.closest('[data-pick]');if(a){$('o_prod').value=a.dataset.pick;calc();}});
+let imgUrl=null;
+function clearFile(){$('o_file').value='';$('o_prev').classList.add('hidden');$('o_img').classList.add('hidden');if(imgUrl){URL.revokeObjectURL(imgUrl);imgUrl=null;}}
+$('o_file').addEventListener('change',e=>{
+  const f=e.target.files[0]; if(!f){clearFile();return;}
+  $('o_fname').textContent=f.name;
+  $('o_fsize').textContent=(f.size/1048576).toFixed(2).replace('.',',')+' MB';
+  $('o_prev').classList.remove('hidden');
+  if(imgUrl)URL.revokeObjectURL(imgUrl);
+  if(f.type.startsWith('image/')){imgUrl=URL.createObjectURL(f);$('o_img').src=imgUrl;$('o_img').classList.remove('hidden');}
+  else{$('o_img').classList.add('hidden');}
+});
+$('o_rm').onclick=clearFile;
+$('o_send').onclick=async()=>{
+  if(!$('o_name').value.trim()){$('o_name').focus();$('o_name').reportValidity();return;}
+  const o=calc(), f=$('o_file').files[0], btn=$('o_send');
+  const des=document.querySelector('input[name=o_des]:checked').value;
+  const win=window.open('about:blank','_blank');
+  btn.disabled=true;btn.textContent='Se trimite...';
+  let saved=null;
+  try{
+    const up=f&&f.size<=4*1048576;
+    const b64=up?await new Promise((ok,no)=>{const r=new FileReader();r.onload=()=>ok(r.result.split(',')[1]);r.onerror=no;r.readAsDataURL(f);}):null;
+    const r=await fetch('/api/orders',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      name:$('o_name').value.trim(),phone:$('o_phone').value.trim(),product:o.c.id,w:o.w,h:o.h,qty:o.q,finish:o.c.fin?$('o_fin').value:'',design:des,note:$('o_note').value.trim(),
+      file:up?{name:f.name,data:b64}:null})});
+    if(r.ok)saved=await r.json();
+  }catch(e){}
+  btn.disabled=false;btn.textContent='Trimite comanda pe WhatsApp';
+  const L=['Bună! Vreau să comand de pe site:'+(saved?` (comanda #${saved.id})`:''),`Nume: ${$('o_name').value.trim()}`,`Produs: ${o.c.n}`,`Dimensiuni: ${o.dim}`,`Bucăți: ${o.q}`];
+  if(o.c.fin)L.push(`Finisaj: ${$('o_fin').value}`);
+  L.push(`Design: ${des}`);
+  if(f)L.push(`Fișier design: ${f.name} (${saved&&up?'încărcat pe site':'îl trimit în această conversație'})`);
+  if($('o_note').value.trim())L.push(`Observații: ${$('o_note').value.trim()}`);
+  L.push(`Preț estimativ: ${lei(o.total)} (TVA inclus)`);
+  const url='https://wa.me/40785607201?text='+encodeURIComponent(L.join('\n'));
+  if(win)win.location.href=url;else location.href=url;
+};
+fetch('/api/products').then(r=>r.ok?r.json():Promise.reject()).then(list=>{
+  if(!Array.isArray(list)||!list.length)return;
+  cfg=list.map(p=>({id:p.id,n:p.name,m2:p.m2,fixed:p.fixed,min:p.min,fin:!!p.fin}));
+  $('o_prod').innerHTML=cfg.map(c=>`<option value="${c.id}">${c.n}</option>`).join('');calc();
+}).catch(()=>{});
+calc();
+</script>
+</body>
+</html>
