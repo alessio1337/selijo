@@ -24,7 +24,7 @@ const api=async(u,m='GET',b)=>{const r=await fetch(u,{method:m,headers:{'Content
 const el=(t,p={},...k)=>{const e=document.createElement(t);for(const[a,v]of Object.entries(p)){if(a in e&&a!=='style')e[a]=v;else e.setAttribute(a,v)}e.append(...k);return e};
 const show=on=>{$('login').classList.toggle('hide',on);$('app').classList.toggle('hide',!on)};
 $('go').onclick=async()=>{try{await api('/api/login','POST',{password:$('pw').value});show(true);orders();prods()}catch(e){$('err').textContent=e.message||''}};
-$('pw').onkeydown=e=>e.key==='Enter'&&$('go').click();
+$('pw').onkeydown=e=>{if(e.key==='Enter')$('go').click()};
 $('out').onclick=()=>{document.cookie='sid=; Max-Age=0; Path=/';location.reload()};
 $('t1').onclick=()=>tab(1);$('t2').onclick=()=>tab(2);
 function tab(n){$('v1').classList.toggle('hide',n!==1);$('v2').classList.toggle('hide',n!==2);$('t1').classList.toggle('on',n===1);$('t2').classList.toggle('on',n===2)}
