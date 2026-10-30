@@ -33,7 +33,7 @@ async function orders(){
   const tb=el('tbody');
   rows.forEach(o=>{
     const sel=el('select',{onchange:()=>api('/api/admin/orders/'+o.id,'PATCH',{status:sel.value}).catch(e=>alert(e.message))},...ST.map(s=>el('option',{value:s,selected:s===o.status},s)));
-    const info=[o.finish,o.design,o.note].filter(Boolean).join(' · ');
+    const info=[o.express?'EXPRESS +30%':'',o.finish,o.design,o.note].filter(Boolean).join(' · ');
     tb.append(el('tr',{},el('td',{},String(o.id)),el('td',{},new Date(o.created).toLocaleString('ro-RO')),
       el('td',{},o.name,el('br'),el('span',{className:'s'},o.phone||'')),
       el('td',{},o.product_name,el('br'),el('span',{className:'s'},info)),
@@ -43,21 +43,38 @@ async function orders(){
   });
   t.append(tb);$('v1').replaceChildren(rows.length?t:el('p',{},'Nu există comenzi încă.'));
 }
+const shrink=(file,max=1000)=>new Promise((ok,no)=>{const im=new Image(),u=URL.createObjectURL(file);
+  im.onload=()=>{const k=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);
+    const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);
+    c.toBlob(b=>b?ok(b):no(new Error('Imagine invalidă')),'image/jpeg',.85)};
+  im.onerror=()=>no(new Error('Fișierul nu este o imagine validă'));im.src=u});
+const b64=blob=>new Promise(ok=>{const r=new FileReader();r.onload=()=>ok(r.result.split(',')[1]);r.readAsDataURL(blob)});
 async function prods(){
   const rows=await api('/api/admin/products'), tb=el('tbody');
   const line=(p,isNew)=>{
+    let img=p.img||'';
+    const thumb=el('img',{src:img,alt:'',style:'width:56px;height:56px;object-fit:cover;border-radius:6px;background:#eee;display:'+(img?'block':'none')});
+    const note=el('span',{className:'s'},img?'':'fără poză');
+    const file=el('input',{type:'file',accept:'image/*',style:'width:150px',onchange:async()=>{
+      const f=file.files[0];if(!f)return;note.textContent='Se încarcă...';
+      try{const blob=await shrink(f);const r=await api('/api/admin/images','POST',{data:await b64(blob)});
+        img=r.url;thumb.src=img;thumb.style.display='block';note.textContent='Încărcată. Apasă Salvează.'}
+      catch(e){note.textContent='';alert(e.message||'Eroare la încărcare')}}});
+    const rm=el('button',{className:'d',type:'button',onclick:()=>{img='';thumb.style.display='none';note.textContent='Poză scoasă. Apasă Salvează.'}},'x');
     const f={id:el('input',{value:p.id||'',disabled:!isNew,size:8,placeholder:'id'}),name:el('input',{value:p.name||'',placeholder:'Nume'}),
+      desc:el('input',{value:p.desc||'',placeholder:'Descriere scurtă',style:'width:200px'}),
       m2:el('input',{type:'number',step:'0.01',value:p.m2??'',style:'width:80px'}),fixed:el('input',{type:'number',step:'0.01',value:p.fixed??'',style:'width:80px'}),
+      fw:el('input',{type:'number',value:p.fw??'',style:'width:60px'}),fh:el('input',{type:'number',value:p.fh??'',style:'width:60px'}),
       min:el('input',{type:'number',step:'0.01',value:p.min??'',style:'width:70px'}),fin:el('input',{type:'checkbox',checked:!!p.fin}),
       active:el('input',{type:'checkbox',checked:isNew||!!p.active}),sort:el('input',{type:'number',value:p.sort??99,style:'width:60px'})};
-    const save=el('button',{className:'b',onclick:async()=>{try{const b={id:f.id.value,name:f.name.value,m2:f.m2.value,fixed:f.fixed.value,min:f.min.value,fin:f.fin.checked,active:f.active.checked?1:0,sort:f.sort.value};
+    const save=el('button',{className:'b',onclick:async()=>{try{const b={id:f.id.value,name:f.name.value,desc:f.desc.value,m2:f.m2.value,fixed:f.fixed.value,fw:f.fw.value,fh:f.fh.value,min:f.min.value,fin:f.fin.checked,active:f.active.checked?1:0,sort:f.sort.value,img};
       await api(isNew?'/api/admin/products':'/api/admin/products/'+p.id,isNew?'POST':'PUT',b);prods()}catch(e){alert(e.message)}}},isNew?'Adaugă':'Salvează');
     const del=isNew?'':el('button',{className:'d',onclick:async()=>{if(confirm('Ștergi '+p.name+'?')){await api('/api/admin/products/'+p.id,'DELETE');prods()}}},'Șterge');
-    return el('tr',{},...Object.values(f).map(x=>el('td',{},x)),el('td',{},save,' ',del));
+    return el('tr',{},el('td',{},thumb,file,rm,el('br'),note),...Object.values(f).map(x=>el('td',{},x)),el('td',{},save,' ',del));
   };
   rows.forEach(p=>tb.append(line(p,false)));tb.append(line({},true));
-  const t=el('table',{},el('thead',{},el('tr',{},...['ID','Nume','Lei / m²','Preț fix','Minim','Finisaj','Activ','Ordine',''].map(h=>el('th',{},h)))),tb);
-  $('v2').replaceChildren(t,el('p',{className:'s'},'Prețurile includ TVA. Completează fie „Lei / m²”, fie „Preț fix” (pentru produse la bucată, cu dimensiune standard).'));
+  const t=el('table',{},el('thead',{},el('tr',{},...['Poză','ID','Nume','Descriere','Lei / m²','Preț fix','Lățime fixă','Înălțime fixă','Minim (lei)','Finisaj','Activ','Ordine',''].map(h=>el('th',{},h)))),tb);
+  $('v2').replaceChildren(t,el('p',{className:'s'},'Prețurile includ TVA. Completează „Lei / m²” sau „Preț fix” (pentru produse la bucată, cu lățime și înălțime fixe, în cm). Pozele se micșorează automat înainte de încărcare. Modificările se văd pe site după „Salvează”.'));
 }
 api('/api/admin/products').then(()=>{show(true);orders();prods()}).catch(()=>{});
 </script></body></html>
